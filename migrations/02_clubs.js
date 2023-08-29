@@ -5,7 +5,7 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('clubs', (table)=> {
-        table.increments("id").primary();
+        table.increments("club_id").primary();
         table.string("name").notNullable();
         table.string("city").notNullable();
         table.string('email').notNullable();

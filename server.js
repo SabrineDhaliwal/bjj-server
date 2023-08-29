@@ -1,7 +1,13 @@
 const express = require('express');
 const app = express();
+const cors =require('cors');
 
 const PORT = process.env.PORT || 5050;
+
+
+//middleware//
+app.use(express.json());
+app.use(cors());
 
 app.get('/', (req,res)=> {
     res.send("connected to Roll & Reflect- .get on server.js");
