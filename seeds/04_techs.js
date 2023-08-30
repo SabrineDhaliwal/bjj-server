@@ -1,130 +1,125 @@
 exports.seed = async function (knex) {
-  await knex("users").del();
-  await knex("users").insert(
-    [
-        {
-          tech_id: 1,
-          tech_name: "Armbar",
-          type: "Joint",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 2,
-          tech_name: "Omoplata",
-          type: "Joint",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 3,
-          tech_name: "Kimura",
-          type: "Joint",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 4,
-          tech_name: "Americana",
-          type: "Joint",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 5,
-          tech_name: "Triangle",
-          type: "Strangle",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 6,
-          tech_name: "Guillotine",
-          type: "Strangle",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 7,
-          tech_name: "Ankle Lock",
-          type: "Joint",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 8,
-          tech_name: "RNC (Rear Naked Choke)",
-          type: "Strangle",
-          level: "Beginner",
-          description: "",
-        },
-        {
-          tech_id: 9,
-          tech_name: "Toe Hold",
-          type: "Joint",
-          level: "Intermediate",
-          description: "",
-        },
-        {
-          tech_id: 10,
-          tech_name: "Knee Bar",
-          type: "Joint",
-          level: "Intermediate",
-          description: "",
-        },
-        {
-          tech_id: 11,
-          tech_name: "Barataplata",
-          type: "Joint",
-          level: "Intermediate",
-          description: "",
-        },
-        {
-          tech_id: 12,
-          tech_name: "Arm Triangle",
-          type: "Strangle",
-          level: "Intermediate",
-          description: "",
-        },
-        {
-          tech_id: 13,
-          tech_name: "Darce Choke",
-          type: "Strangle",
-          level: "Advanced",
-          description: "",
-        },
-        {
-          tech_id: 14,
-          tech_name: "Anaconda Choke",
-          type: "Strangle",
-          level: "Advanced",
-          description: "",
-        },
-        {
-          tech_id: 15,
-          tech_name: "Peruvian Necktie",
-          type: "Strangle",
-          level: "Advanced",
-          description: "",
-        },
-        {
-          tech_id: 16,
-          tech_name: "Heel Hook",
-          type: "Joint",
-          level: "Advanced",
-          description: "",
-        },
-        {
-          tech_id: 17,
-          tech_name: "Yadviga",
-          type: "Joint",
-          level: "Advanced",
-          description: "",
-        },
-      ]
-      
-
-
-
-);
+  await knex("techs").del();
+  await knex("techs").insert([
+    {
+      tech_id: 1,
+      tech_name: "Armbar",
+      type: "Joint",
+      level: "Beginner",
+      description: "Key points: control the opponent's arm, isolate the elbow, apply pressure.",
+    },
+    {
+      tech_id: 2,
+      tech_name: "Omoplata",
+      type: "Joint",
+      level: "Beginner",
+      description: "Also called the ashi sankaku garami (leg triangle entanglement) in judo and the coil lock in catch wrestling, the omoplata is a technique in which the attacking student's legs and hips are used to extend an opponent's shoulder joint past its normal range of motion",
+    },
+    {
+      tech_id: 3,
+      tech_name: "Kimura",
+      type: "Joint",
+      level: "Beginner",
+      description: "The Kimura lock, which is also known as the double wristlock, chicken wing, and gyaku ude-garami.The Kimura works by isolating the elbow and shoulder joints through the use of a figure-four grip. One of the things that makes this submission so effective is its versatility. It can be applied from a number of different positions, including standing, mount, side control, closed guard, and open guard.",
+    },
+    {
+      tech_id: 4,
+      tech_name: "Americana",
+      type: "Joint",
+      level: "Beginner",
+      description: "The Americana, also known as the key-lock in wrestling, and ude garami in Judo is a shoulder lock in Brazilian Jiu-Jitsu that applies pressure on the shoulder of the opponent by bending the arm at a 90-degree angle.",
+    },
+    {
+      tech_id: 5,
+      tech_name: "Triangle",
+      type: "Strangle",
+      level: "Beginner",
+      description: "The triangle choke is one of BJJ’s signature submissions. One of the reasons why the triangle choke is so effective is its versatility. The triangle choke has multiple variations, and there are many ways to achieve it. Although the triangle choke can be applied from virtually any position, it is most commonly applied from the closed guard.",
+    },
+    {
+      tech_id: 6,
+      tech_name: "Guillotine",
+      type: "Strangle",
+      level: "Beginner",
+      description: "The choke, named after the medieval torture device, places an opponent’s head under the armpit and the forearm under his or her neck, giving the opponent the appearance of being trapped in a guillotine. The choke works by putting pressure on the carotid arteries, forcing an opponent caught in the submission to tap out. However, it should be noted that the guillotine choke can also function as an air choke when the forearm is pressed against an opponent’s windpipe. In practice, though, the guillotine choke usually functions as a combination of the two, with pressure being placed on the carotid arteries and windpipe, making it extremely uncomfortable for the opponent.",
+    },
+    {
+      tech_id: 7,
+      tech_name: "Ankle Lock",
+      type: "Joint",
+      level: "Beginner",
+      description: "The ankle lock is a leg-based attack that targets the Achilles tendon by pressing it towards the foot. It is a classic submission that is not only taught in BJJ but also in other forms of grappling like Sambo and Judo. It is also the submission that is mostly allowed in competition. While the heel hook, toe hold, and kneebar are great in their own right, they are deemed “risky” in the hands of lower belts, thus banned in some rulesets. The ankle lock, on the other hand, is allowed in most cases. ",
+    },
+    {
+      tech_id: 8,
+      tech_name: "RNC (Rear Naked Choke)",
+      type: "Strangle",
+      level: "Beginner",
+      description: "The rear naked choke creates an anatomical mismatch. Specifically, it pits one person’s arms against another person’s neck. However, as opposed to other parts of the body, the neck is uniquely vulnerable to attack.",
+    },
+    {
+      tech_id: 9,
+      tech_name: "Toe Hold",
+      type: "Joint",
+      level: "Intermediate",
+      description: "The toe hold is characterized by isolating a leg and doing a figure 4 grip on the foot. You start by holding the end of your opponent’s foot with one hand, then loop your other hand under his shin and grab your other arm near the wrist. This should sound familiar to you because this is the same arm configuration as the kimura lock. The finishing mechanics of the toe hold is similar to the kimura’s as well. You use the figure 4 grip to torque the foot in a twisting motion. This movement hyperextends the ankle’s ligaments and can cause tears along the foot if given enough pressure. ",
+    },
+    {
+      tech_id: 10,
+      tech_name: "Knee Bar",
+      type: "Joint",
+      level: "Intermediate",
+      description: "It is a leg-based attack that aims to apply pressure on the knee joint by pushing on the opposite side of the knee and pulling the leg to hyperextend the limb. ",
+    },
+    {
+      tech_id: 11,
+      tech_name: "Barataplata",
+      type: "Joint",
+      level: "Intermediate",
+      description: "Baratoplata is primarily shoulder lock submission. Shoulder lock position is achieved by trapping opponents elbow between legs and applying pressure by moving to opposite side. Key details for finishing this submission are: move the elbow and wrist in opposite directions at the same time.",
+    },
+    {
+      tech_id: 12,
+      tech_name: "Arm Triangle",
+      type: "Strangle",
+      level: "Intermediate",
+      description: " The Kata Gatame is often called a “Front Arm Triangle,” as it is implemented when you and your opponent are facing each other, in a chest-to-chest situation, such as the mount or side control. In order to strangle your opponent with the Kata Gatame, the first step is to get one of his arms extended, so that you can achieve the “one arm in, one arm out” scenario that is necessary for all variations of Triangle Chokes. A great way to do this is to drive your shoulder into your opponent’s face from side control or mount, creating shoulder pressure. When he inevitably tries to push you away, he will extend his arm, allowing you to trap his arm and head in your choke. From here, wrap your arm around the back of his neck, and lock a palm-to-palm grip. While it is not always necessary, many practitioners like to dismount, moving their entire body off of their opponent and into side control, on the side of the arm that is trapped in the strangle. Now squeeze slowly, and wait for your partner to tap!",
+    },
+    {
+      tech_id: 13,
+      tech_name: "Darce Choke",
+      type: "Strangle",
+      level: "Advanced",
+      description: " the best time to use the D’Arce is when you and your opponent are perpendicular; ideally when he is on his side. The most common situation we see the D’Arce used is when the bottom fighter is attempting to use an underhook to sweep from half guard or side control. As soon as your opponent attempts to establish the underhook, overhook his arm, and shoot your wrist under his neck so that your thumb is touching the base of his skull. Then, use your free hand to stuff his head into your chest, as you lock up a figure four grip by grabbing your free arm’s bicep with your overhooking arm. Now that the choke is secure, you can focus on the finish",
+    },
+    {
+      tech_id: 14,
+      tech_name: "Anaconda Choke",
+      type: "Strangle",
+      level: "Advanced",
+      description: "The Anaconda Choke can be set up any time your opponent’s head is below yours, and you have the capability to grab it. While this can happen in all sorts of positions, the most prominent place the Anaconda is set up from is the front headlock. If your opponent shoots in an attempt to take you down, establish the front headlock by sprawling on him and grabbing his chin. Then, take the hand that is holding his chin and shoot it through to his armpit, so your arm is crossing underneath his body. The next step is to lock up the choke with a figure four. Just as we did with the D’Arce Choke, seal the lock by grabbing your free arm’s bicep with the hand that was extended through the armpit. Once the choke is locked, you can finish by executing a “gator roll,” rolling underneath your opponent on the side of the arm that is trapped. Roll all the way underneath him so that he is on his side, and then squeeze to finish the choke.",
+    },
+    {
+      tech_id: 15,
+      tech_name: "Peruvian Necktie",
+      type: "Strangle",
+      level: "Advanced",
+      description: "The Peruvian necktie is one of the many necktie choke variations in BJJ. It was created by a former UFC welterweight fighter named Tony De Sauza.This choke is usually applied from the front headlock after successfully defending a takedown by sprawling. After the sprawl, it is best to apply the choke with head and arm control against the opponent. It is done by trapping the opponent’s head and arm using both hands with an S-grip or gable grip while your leg is thrown over behind the opponent’s neck (for downward pressure) while the other leg is thrown across the back.",
+    },
+    {
+      tech_id: 16,
+      tech_name: "Heel Hook",
+      type: "Joint",
+      level: "Advanced",
+      description: "Familiarity is important when training in BJJ, especially techniques like the heel hook. Both grapplers must have a firm understanding of the concept of this technique to effectively utilize it on the mats. It is so powerful that apart from the submission itself, defending against it incorrectly can worsen its damage to the knee joint. While most practitioners refrain from training the heel hook, learning it will turn you into a menace on the mats. Use with caution.",
+    },
+    {
+      tech_id: 17,
+      tech_name: "Yadviga",
+      type: "Joint",
+      level: "Advanced",
+      description: "so advanced, couldn't find information",
+    },
+   
+  ]);
 };

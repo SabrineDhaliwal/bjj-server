@@ -1,15 +1,15 @@
 exports.seed = async function (knex) {
-    await knex("users").del();
-    await knex("users").insert([
+    await knex("clubs").del();
+    await knex("clubs").insert([
         {
-            id: 1,
-            club: "matcraft",
+            club_id: 1,
+            club_name: "matcraft",
             city: "Vancouver",
             email: "info@matcraft.com"
         },
         {
-            id: 2,
-            club: "Lions MMA",
+            club_id: 2,
+            club_name: "Lions MMA",
             city: "Vancouver",
             email: "info@lionsmma.com"
         },

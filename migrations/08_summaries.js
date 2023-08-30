@@ -8,6 +8,11 @@ exports.up = function(knex){
         table.increments("summary_id").primary;
         table.integer("user_id").unsigned();
         table.integer("combo_id").unsigned();
+        // from user input- form
+        table.string("title").notNullable();
+        table.text("summary").notNullable();
+        table.string("video").notNullable();
+        table.string("date").notNullable
 
         table.foreign("user_id").references("users.user_id");
         table.foreign("combo_id").references("combos.combo_id");

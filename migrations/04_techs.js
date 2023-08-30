@@ -9,7 +9,7 @@ exports.up = function(knex){
         table.string("tech_name").notNullable();
         table.string("type").notNullable();
         table.string("level").notNullable();
-        table.string('description').notNullable();
+        table.text('description').notNullable();
     });
 };
 
