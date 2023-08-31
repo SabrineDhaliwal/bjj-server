@@ -6,6 +6,9 @@ require("dotenv").config();
 const userAccountRoutes = require("./routes/userAccountRoutes");
 const beltRanksRoutes = require("./routes/utilsRoutes");
 const utilsRoutes = require("./routes/utilsRoutes");
+const techsRoutes = require("./routes/techsRoutes");
+const targetsRoutes = require("./routes/targetsRoutes");
+const positionsRoutes = require("./routes/positionsRoutes");
 
 const PORT = process.env.PORT || 5050;
 
@@ -13,9 +16,12 @@ const PORT = process.env.PORT || 5050;
 //middleware//
 app.use(express.json());
 app.use(cors());
-app.use("/useraccount", userAccountRoutes)
-app.use("/beltranks", beltRanksRoutes)
-app.use("/utils", utilsRoutes)
+app.use("/useraccount", userAccountRoutes);
+app.use("/beltranks", beltRanksRoutes);
+app.use("/utils", utilsRoutes);
+app.use("/techs", techsRoutes);
+app.use("/targets", targetsRoutes);
+app.use("/positions", positionsRoutes)
 
 
 //can see response on postman and req body in console

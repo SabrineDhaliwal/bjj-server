@@ -1,8 +1,9 @@
 const knex = require('knex')(require('../knexfile'));
 
+// adding a new user to database
 const addNewAccount = (req, res)=> {
 //intital validation if all required fields are complete
-// console.log('response in router', req)
+
 if (
     !req.body.belt_rank ||
     !req.body.club_name ||

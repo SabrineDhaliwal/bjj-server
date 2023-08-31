@@ -11,8 +11,7 @@ const getBelts = (req, res) => {
     })
     .catch((err) => {
       console.error(
-        err,
-        "I'm the catch error, if you see you, something went wrong getting belt ranks"
+        err, "I'm the catch error, if you see you, something went wrong getting belt ranks"
       );
       res.status(500).send("Internal error on belt ranks controller");
     });

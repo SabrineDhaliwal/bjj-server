@@ -6,7 +6,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('positions', (table)=> {
         table.increments("position_id").primary();
-        table.string("name").notNullable();
+        table.string("position_name").notNullable();
         table.text("description").notNullable();
     
     });
