@@ -14,6 +14,8 @@ exports.up = function (knex) {
     table.string("belt_rank").notNullable();
     table.integer("club_id").unsigned().notNullable();
     table.string("club_name").notNullable();
+    table.string("password").notNullable();
+    table.string("confirmPassword").notNullable();
 
     table.foreign("belt_rank_id").references("belt_ranks.belt_rank_id");
     table.foreign("club_id").references("clubs.club_id");
@@ -25,6 +27,8 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
     return knex.schema.dropTable("clubs")
-    .dropTable("belt_ranks");
+    .dropTable("belt_ranks")
+    .dropTable("users");
+
 
 }
