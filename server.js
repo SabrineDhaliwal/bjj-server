@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors =require('cors');
 require("dotenv").config();
+const path = require('path');
 
 const userAccountRoutes = require("./routes/userAccountRoutes");
 const beltRanksRoutes = require("./routes/utilsRoutes");
@@ -9,6 +10,7 @@ const utilsRoutes = require("./routes/utilsRoutes");
 const techsRoutes = require("./routes/techsRoutes");
 const targetsRoutes = require("./routes/targetsRoutes");
 const positionsRoutes = require("./routes/positionsRoutes");
+const summaryRoutes = require("./routes/summaryRoutes")
 
 const PORT = process.env.PORT || 5050;
 
@@ -16,20 +18,15 @@ const PORT = process.env.PORT || 5050;
 //middleware//
 app.use(express.json());
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.use("/useraccount", userAccountRoutes);
 app.use("/beltranks", beltRanksRoutes);
 app.use("/utils", utilsRoutes);
 app.use("/techs", techsRoutes);
 app.use("/targets", targetsRoutes);
-app.use("/positions", positionsRoutes)
-
-
-//can see response on postman and req body in console
-// app.post('/createaccount', (req,res)=> {
-//     // console.log("post request from create account", req.body)
-//     const newAccount = req.body
-//     res.status(201).send("Successfully created account");
-// });
+app.use("/positions", positionsRoutes);
+app.use("/summary", summaryRoutes);
 
 
 //basic routes all work on postman

@@ -11,7 +11,7 @@ const getTechs = (req, res) => {
     knex("techs")
     .select("tech_id", "tech_name")
     .then((techresponse)=> {
-        console.log(techresponse)
+        // console.log(techresponse)
         res.status(200).send(techresponse)
     })
     .catch((err)=> {

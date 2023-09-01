@@ -5,7 +5,7 @@
 
 exports.up = function(knex){
     return knex.schema.createTable('summaries', (table)=>{
-        table.increments("summary_id").primary;
+        table.increments("summary_id").primary();
         table.integer("user_id").unsigned();
         table.integer("tech_id").unsigned();
         table.string("tech_name").notNullable();
@@ -16,8 +16,8 @@ exports.up = function(knex){
 
         // from user input- form
         table.string("title").notNullable();
-        table.text("summary").notNullable();
-        table.string("video").notNullable();
+        table.text("summary").nullable();
+        table.string("video").nullable();
         table.string("date").notNullable();
 
         table.foreign("user_id").references("users.user_id");
