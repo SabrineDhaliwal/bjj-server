@@ -10,7 +10,6 @@ const getTarget = (req, res) => {
     knex("targets")
     .select("target_id", "target_name")
     .then((targetresponse)=> {
-        // console.log(targetresponse)
         res.status(200).send(targetresponse)
     })
     .catch((err)=> {

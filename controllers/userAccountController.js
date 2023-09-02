@@ -42,6 +42,25 @@ if (
 
 }
 }
+
+// get call to populate user detail portion
+const userDetails = (req, res) => {
+    knex("users")
+    .select("*")
+    .where({user_id: Number(req.params.id)})
+    .then((usersdetails)=> {
+        res.status(200).json(usersdetails);
+    })
+    .catch((err)=> {
+        console.error(err)
+        res.status(400).send({message:"something went wrong at userDetails user account controller"})
+    })
+
+
+}
+
+
 module.exports = {
     addNewAccount,
+    userDetails,
 }

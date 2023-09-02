@@ -1,8 +1,9 @@
 const knex = require('knex')(require("../knexfile"));
 
 const addNewSummary = (req, res)=> {
+
     //initial backend validation
-    // console.log('file', req.file);
+    console.log('file', req.file);
     // console.log(req.body);
     if (!req.body.date ||
         !req.body.id ||
@@ -35,19 +36,48 @@ const addNewSummary = (req, res)=> {
                 video: req.file.path
 
             }) .then(()=>{
+                res.status(201).json({message:"new record added successfully"})
             
             })
-           
-            
             .catch((err)=> {
                 console.error(err, "If you can read this, something went wrong at summary controller")
                 res.status(500).json({message:"internal server error at summary controller"})
             })
-        }
-        
-       
+        } 
 }
 
+const getSummary =(req, res)=> {
+    knex("summaries")
+    .select("*")
+    .where({user_id: Number(req.params.id)})
+    .then((summary)=> {
+        res.status(200).json({summary, message:"successful get query, CONGRATS!"});
+    })
+    .catch((err)=> {
+        console.error(err, "if you can see this, something went wrong at getSummary call at summary controller")
+        res.status(500).json({message:"internal server error at getSummary query- summary controller"})
+    })
+}
+
+const deleteSummary =(req, res)=> {
+    console.log(req.params)
+
+    // const summary_id = req.params.
+    knex("summaries")
+    .where("summary_id", req.params.summary_id)
+    .select("summary_id")
+    // .del()
+    .then((data)=> {
+        res.status(204).send("successfully deleted")
+    })
+    .catch((err)=> {
+        console.log(err)
+        res.status(500).send("Could not delete entry, its on the internet forever")
+    })
+
+}
 module.exports= {
-    addNewSummary
+    addNewSummary,
+    getSummary,
+    deleteSummary
 }

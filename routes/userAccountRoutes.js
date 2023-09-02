@@ -5,9 +5,7 @@ const userAccountController= require("../controllers/userAccountController");
 
 
 router.route("/").post(userAccountController.addNewAccount);
-router.get("/", (req, res) => {
-    res.send("hello, world")
-});
-// add get call on usersAccount controller
+router.route("/:id").get(userAccountController.userDetails);
+
 
 module.exports = router;

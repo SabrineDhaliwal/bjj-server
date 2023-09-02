@@ -7,11 +7,10 @@ const knex = require('knex')(require("../knexfile"));
 // delete technique
 
 const getTechs = (req, res) => {
-    console.log(res)
+    // console.log(res)
     knex("techs")
     .select("tech_id", "tech_name")
     .then((techresponse)=> {
-        // console.log(techresponse)
         res.status(200).send(techresponse)
     })
     .catch((err)=> {
