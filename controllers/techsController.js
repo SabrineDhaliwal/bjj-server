@@ -19,6 +19,36 @@ const getTechs = (req, res) => {
     });
 };
 
+ const addTech = (req, res) => {
+    console.log(req.body)
+    knex("techs")
+    .insert(req.body)
+    .then((addtechsresponse)=> {
+        res.status(201).send(addtechsresponse)
+    })
+    .catch((err)=> {
+        console.error(err, "something went wrong at addTech in Tech Controller")
+        res.status(500).send("internal error at addTech,tech controller")
+    })
+ }
+
+ const getTechById = (req,res)=> {
+    knex("techs")
+    .select("*")
+    .where('tech_id', req.params.id)
+    .then((getTechByIdResponse)=>{
+        res.status(201).send(getTechByIdResponse)
+      
+    })
+    .catch((err)=> {
+        console.error(err, "something went wrong at getting tech byid")
+        res.status(500).send("internal error at gettingtech byid")
+    })
+
+ }
 module.exports = {
     getTechs,
+    addTech,
+    getTechById
+
 };

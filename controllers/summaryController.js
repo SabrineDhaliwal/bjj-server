@@ -61,12 +61,10 @@ const getSummary =(req, res)=> {
 
 const deleteSummary =(req, res)=> {
     console.log(req.params)
-
-    // const summary_id = req.params.
     knex("summaries")
     .where("summary_id", req.params.summary_id)
     .select("summary_id")
-    // .del()
+    .del()
     .then((data)=> {
         res.status(204).send("successfully deleted")
     })
@@ -74,10 +72,26 @@ const deleteSummary =(req, res)=> {
         console.log(err)
         res.status(500).send("Could not delete entry, its on the internet forever")
     })
+}
 
+const editSummary = (req, res) => {
+    console.log(req.params)
+    knex('summaries')
+    .where("summary_id", req.params.summary_id)
+    .select('summary_id')
+    .update()
+    .then((data)=> {
+        console.log(data)
+        res.status(202).send("successfully edited summary")
+    })
+    .catch((err)=> {
+        console.error(err, "something went wrong at ediySummary summaryController")
+        res.status(500).send("Internal error could not edit summary- check summary controller")
+    })
 }
 module.exports= {
     addNewSummary,
     getSummary,
-    deleteSummary
+    deleteSummary,
+    editSummary,
 }

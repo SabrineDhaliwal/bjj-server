@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sharp = require('sharp');
+
 
 // const ffmpeg = require("fluent-ffmpeg");
 
@@ -52,7 +52,7 @@ const summaryController = require("../controllers/summaryController");
 
 router.route("/").post(upload.single('video'), summaryController.addNewSummary)
 router.route("/:id").get(summaryController.getSummary)
-router.route("/:id/:summary_id").delete(summaryController.deleteSummary);
+router.route("/:id/:summary_id").delete(summaryController.deleteSummary).put(summaryController.editSummary);
 
 module.exports = router;
 
