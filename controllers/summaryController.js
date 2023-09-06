@@ -73,11 +73,10 @@ const getSummaries = (req, res) => {
 };
 
 const deleteSummary = (req, res) => {
-  console.log(req.params);
   knex("summaries")
     .where("summary_id", req.params.summary_id)
     .select("summary_id")
-    // .del()
+    .del()
     .then((data) => {
       res.status(204).send("successfully deleted");
     })
@@ -91,7 +90,6 @@ const deleteSummary = (req, res) => {
 
 //editSummary logic
 const getSummary = (req, res) => {
-  // console.log(req.params);
   knex("summaries")
     .where("summary_id", req.params.summaryid)
     .select("*")
@@ -109,7 +107,6 @@ const getSummary = (req, res) => {
         user_id:getSummariesResponse[0].user_id,
       }
       res.status(202).send(getSummary);
-      console.log("get summary condenses", getSummary)
     })
 
     .catch((err) => {
@@ -127,7 +124,6 @@ const getSummary = (req, res) => {
 
 
 const updateSummary=(req, res)=> {
-  console.log(req.body)
     const positionsOptionsValue = req.body.position_name;
     const [position_id, position_name] = positionsOptionsValue.split(",");
     const targetOptionsValue = req.body.target_name;
@@ -151,7 +147,6 @@ const updateSummary=(req, res)=> {
         summary: req.body.summary,
 })
 .then((response)=> {
-  console.log("successful?", response)
   res.status(202).send(response)
 })
 .catch((err)=>{

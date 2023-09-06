@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "",
+      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
       date: "2023-07-10",
     },
      {
@@ -28,7 +28,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "",
+      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
       date: "2023-07-10",
     },
       {
@@ -43,7 +43,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "",
+      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
       date: "2023-07-10",
     },
       {
@@ -58,7 +58,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "",
+      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
       date: "2023-07-10",
     },
        {
@@ -73,7 +73,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "",
+      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
       date: "2023-07-10",
     },
        {
@@ -88,7 +88,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "",
+      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
       date: "2023-07-10",
     },
   ]);
