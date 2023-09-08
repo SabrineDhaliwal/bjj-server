@@ -20,7 +20,7 @@ const summaryController = require("../controllers/summaryController");
 
 router.route("/").post(upload.single('video'), summaryController.addNewSummary)
 router.route("/:id").get(summaryController.getSummaries)
-router.route("/edit/:summaryid").delete(summaryController.deleteSummary).get(summaryController.getSummary).put(summaryController.updateSummary);
+router.route("/edit/:summaryid").delete(summaryController.deleteSummary).get(summaryController.getSummary).put(summaryController.updateSummary)
 
 module.exports = router;
 

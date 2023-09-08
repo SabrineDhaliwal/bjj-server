@@ -74,7 +74,7 @@ const getSummaries = (req, res) => {
 
 const deleteSummary = (req, res) => {
   knex("summaries")
-    .where("summary_id", req.params.summary_id)
+    .where("summary_id", req.params.summaryid)
     .select("summary_id")
     .del()
     .then((data) => {
@@ -95,7 +95,7 @@ const getSummary = (req, res) => {
     .select("*")
     .then((getSummariesResponse) => {
       if (getSummariesResponse.length === 0){
-        return res.status(404).sned("Summary not found")
+        return res.status(404).send("Summary not found")
       }
       const getSummary ={ 
         date: getSummariesResponse[0].date,
