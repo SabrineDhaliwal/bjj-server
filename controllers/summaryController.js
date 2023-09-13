@@ -61,7 +61,7 @@ const getSummaries = (req, res) => {
     .catch((err) => {
       console.error(
         err,
-        "if you can see this, something went wrong at getSummary call at summary controller"
+        "if you can see this, something went wrong at getSummaries call at summary controller"
       );
       res
         .status(500)
