@@ -56,7 +56,7 @@ const getSummaries = (req, res) => {
     .then((summary) => {
       res
         .status(200)
-        .json({ summary, message: "successful get query, CONGRATS!" });
+        .send(summary);
     })
     .catch((err) => {
       console.error(
@@ -124,12 +124,13 @@ const getSummary = (req, res) => {
 
 
 const updateSummary=(req, res)=> {
-    const positionsOptionsValue = req.body.position_name;
-    const [position_id, position_name] = positionsOptionsValue.split(",");
-    const targetOptionsValue = req.body.target_name;
-    const [target_id, target_name] = targetOptionsValue.split(",");
-    const techOptionsValue = req.body.tech_name;
-    const [tech_id, tech_name] = techOptionsValue.split(",");
+  console.log(req.body, "response body from edit")
+    // const positionsOptionsValue = req.body.position_name;
+    // const [position_id, position_name] = positionsOptionsValue.split(",");
+    // const targetOptionsValue = req.body.target_name;
+    // const [target_id, target_name] = targetOptionsValue.split(",");
+    // const techOptionsValue = req.body.tech_name;
+    // const [tech_id, tech_name] = techOptionsValue.split(",");
 
     knex("summaries")
     .where('summary_id', req.params.summaryid)
@@ -137,17 +138,17 @@ const updateSummary=(req, res)=> {
     .update({
       date: req.body.date,
         user_id: req.body.id,
-        position_id: Number(position_id),
-        position_name: position_name,
-        target_id: Number(target_id),
-        target_name: target_name,
-        tech_id: Number(tech_id),
-        tech_name: tech_name,
+        // position_id: Number(position_id),
+        position_name: req.body.position_name,
+        // target_id: Number(target_id),
+        target_name: req.body.target_name,
+        // tech_id: Number(tech_id),
+        tech_name: req.body.tech_name,
         title: req.body.title,
         summary: req.body.summary,
 })
 .then((response)=> {
-  res.status(202).send(response)
+  res.sendStatus(202).send(response)
 })
 .catch((err)=>{
   console.error(err)
