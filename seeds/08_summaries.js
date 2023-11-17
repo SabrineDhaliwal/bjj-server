@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "I focused on making sure I was shifting my weight across my partners chest and using my near head sid leg to control them.",
-      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
+      video: "uploads/2023-09-16T21-50-00.541Z-video2.mp4",
       date: "2023-07-10",
     },
      {
@@ -28,7 +28,7 @@ exports.seed = async function (knex) {
       title: "Ankel locks from North South?",
       summary:
         "Not totally impossible but you gotta be quick to pull yourself from noth south to underthem and grab oneof their ankles and trap it in your armpit ",
-      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
+      video: 'uploads/2023-09-16T21-50-00.541Z-video2.mp4',
       date: "2023-07-10",
     },
       {
@@ -43,7 +43,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         " transtioning from side control to pulling them upwards and almost riding them like in a saddle to finish the kimura",
-      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
+      video: 'uploads/2023-09-16T21-50-00.541Z-video2.mp4',
       date: "2023-07-10",
     },
       {
@@ -58,7 +58,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
+      video: 'uploads/2023-09-16T21-50-00.541Z-video2.mp4',
       date: "2023-07-10",
     },
        {
@@ -73,7 +73,7 @@ exports.seed = async function (knex) {
       title: "Nailed that Armbar from side control",
       summary:
         "Today we worked on landing armbars from different sidecontrol situations. How to transition from kimura to armbar",
-      video: "uploads/2023-09-05T17-04-29.099Z-video2.mp4",
+      video: 'uploads/2023-09-16T21-50-00.541Z-video2.mp4',
       date: "2023-07-10",
     },
     

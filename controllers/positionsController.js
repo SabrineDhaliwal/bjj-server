@@ -1,6 +1,6 @@
 const knex = require('knex')(require("../knexfile"));
 
-//TODO get request to populate position dropdown menue
+//TODO get request to populate position dropdown menu
 
 //LATER TODO
 // post new postion
