@@ -37,7 +37,7 @@ if (
         return res.status(201).json({newUser, message:"successfully created new account"})
     })
 .catch((err)=> {
-    console.error(err,"if you see you, something went wrong at userAccountController");
+    console.error(err,"if you see this, something went wrong at userAccountController");
 })
 
 }

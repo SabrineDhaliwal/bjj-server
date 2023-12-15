@@ -3,6 +3,7 @@ const knex = require('knex')(require("../knexfile"));
 //TODO get request to populate position dropdown menu
 
 //LATER TODO
+// get by id
 // post new postion
 // delete position
 
@@ -18,6 +19,19 @@ const getPosition = (req, res) => {
     });
 };
 
+const getPositionById = (req, res)=> {
+    knex('positions')
+    .select('*')
+    .where('position_id', req.params.id)
+    .then((getPositionByIdRes)=>{
+        res.status(201).send(getPositionByIdRes)
+    })
+    .catch((err)=> {
+        console.error(err, "error at getPositionById")
+        res.status(500).send('internal error at getPositionById')
+    })
+}
 module.exports = {
     getPosition,
+    getPositionById
 };
