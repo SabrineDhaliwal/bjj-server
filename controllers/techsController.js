@@ -12,6 +12,7 @@ const getTechs = (req, res) => {
     .select("tech_id", "tech_name")
     .then((techresponse)=> {
         res.status(200).send(techresponse)
+        console.log(techresponse)
     })
     .catch((err)=> {
         console.error(err, "error at tech controller");

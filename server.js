@@ -13,6 +13,7 @@ const positionsRoutes = require("./routes/positionsRoutes");
 const summaryRoutes = require("./routes/summaryRoutes")
 
 const PORT = process.env.PORT || 5050;
+console.log("testing", PORT)
 
 
 //middleware//
@@ -29,7 +30,9 @@ app.use("/positions", positionsRoutes);
 app.use("/summary", summaryRoutes);
 
 
-
+app.get("/", (req,res)=> {
+    res.send("can you see me on postman?")
+})
 
 app.listen(PORT, () => {
     console.log(`app running on port ${PORT}`)
