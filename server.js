@@ -4,7 +4,7 @@ const cors =require('cors');
 require("dotenv").config();
 const path = require('path');
 
-const userAccountRoutes = require("./routes/userAccountRoutes");
+const newUserRoutes = require("./routes/newUserRoutes");
 const beltRanksRoutes = require("./routes/utilsRoutes");
 const utilsRoutes = require("./routes/utilsRoutes");
 const techsRoutes = require("./routes/techsRoutes");
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use("/useraccount", userAccountRoutes);
+app.use("/newuser", newUserRoutes);
 app.use("/beltranks", beltRanksRoutes);
 app.use("/utils", utilsRoutes);
 app.use("/techs", techsRoutes);

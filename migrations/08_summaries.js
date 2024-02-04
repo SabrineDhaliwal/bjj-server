@@ -35,8 +35,8 @@ exports.up = function(knex){
 
 exports.down = function(knex) {
     return knex.schema
-    .dropTable('users')
-    .dropTable("techs")
-    .dropTable("targets")
+    // .dropTable('users')
+    // .dropTable("techs")
+    // .dropTable("targets")
     .dropTable("summaries")
 }

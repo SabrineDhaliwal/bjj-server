@@ -18,5 +18,5 @@ exports.up = function(knex) {
  */
 
 exports.down = function (knex) {
-    return knex.schema.dropTable('positon');
+    return knex.schema.dropTable('positions');
 };
