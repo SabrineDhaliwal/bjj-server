@@ -10,7 +10,8 @@ const utilsRoutes = require("./routes/utilsRoutes");
 const techsRoutes = require("./routes/techsRoutes");
 const targetsRoutes = require("./routes/targetsRoutes");
 const positionsRoutes = require("./routes/positionsRoutes");
-const summaryRoutes = require("./routes/summaryRoutes")
+const summaryRoutes = require("./routes/summaryRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 const PORT = process.env.PORT || 5050;
 console.log("testing", PORT)
@@ -28,6 +29,7 @@ app.use("/techs", techsRoutes);
 app.use("/targets", targetsRoutes);
 app.use("/positions", positionsRoutes);
 app.use("/summary", summaryRoutes);
+app.use("/profile", profileRoutes);
 
 
 app.get("/", (req,res)=> {
