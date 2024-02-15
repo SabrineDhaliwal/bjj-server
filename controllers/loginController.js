@@ -42,7 +42,7 @@ const addUser = async (req, res) => {
 
     if (emailExists) {
       return res.status(400).json({
-        message: "Email has already been used, try logging in",
+        message: "Email has already been used, try another email",
       });
     }
   } catch (err) {
@@ -89,6 +89,8 @@ const loginUser = async (req, res) => {
     }
 
 };
+// TO DO 
+// refresh tokens for more security 
 
 // function generateAccessToken(user){
 //     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn:"30m"})
