@@ -15,6 +15,16 @@ const getProfileDetails = (req, res)=> {
     })
 }
 
+const createProfile = (req, res ) => {
+    knex('profiles')
+    .insert( req.body)
+    .where({user_id:req.params.id})
+    .then((response)=> {
+        console.log(response)
+        res.status(204).send("created profile content")
+    })
+}
 module.exports = {
-    getProfileDetails
+    getProfileDetails,
+    createProfile
 }

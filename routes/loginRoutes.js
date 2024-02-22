@@ -5,7 +5,7 @@ const authorize = require('../middleware/authorize')
 
 
 
-router.route('/').post(loginController.addUser)
+router.route('/newuser').post(loginController.addUser)
 router.route('/user').post(loginController.loginUser)
 router.route("/:id").get(authorize, loginController.userDetails);
 

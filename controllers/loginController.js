@@ -25,8 +25,8 @@ const userDetails = (req, res) => {
 //adding a new user
 const addUser = async (req, res) => {
   const { email, password, confirmPassword } = req.body;
-  const hashedPassword = await bcrypt.hashSync(req.body.password);
-  const hashedConfirmPassword = await bcrypt.hashSync(req.body.confirmPassword);
+  const hashedPassword = await bcrypt.hashSync(req.body.password, 10);
+  const hashedConfirmPassword = await bcrypt.hashSync(req.body.confirmPassword, 10);
   console.log({ hashedPassword, hashedConfirmPassword, email });
   const newUser = {
     email: email,
@@ -52,7 +52,7 @@ const addUser = async (req, res) => {
   // insert into database
   try {
     await knex("users").insert(newUser);
-    res.status(201).send({ message: "registered new user" });
+    res.status(201).send({ message: "registered new user"});
   } catch (err) {
     console.error(err);
     res.status(500).send({ message: "error at addUser, loginController" });
@@ -78,7 +78,7 @@ const loginUser = async (req, res) => {
       // validate Password
        const passwordMatch = await bcrypt.compare(password, user.password) 
        if (!passwordMatch){
-         return res.status(400).send("Invalid Password");
+         return res.status(401).send("Invalid Password");
         } 
       
         const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET);
