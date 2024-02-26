@@ -124,7 +124,6 @@ const getSummary = (req, res) => {
 
 
 const updateSummary=(req, res)=> {
-  console.log(req.body, "response body from edit")
     // const positionsOptionsValue = req.body.position_name;
     // const [position_id, position_name] = positionsOptionsValue.split(",");
     // const targetOptionsValue = req.body.target_name;
@@ -148,7 +147,7 @@ const updateSummary=(req, res)=> {
         summary: req.body.summary,
 })
 .then((response)=> {
-  res.sendStatus(202).send(response)
+  res.sendStatus(202, response)
 })
 .catch((err)=>{
   console.error(err)
