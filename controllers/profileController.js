@@ -17,7 +17,7 @@ const getProfileDetails = (req, res)=> {
 
 const createProfile = (req, res ) => {
     knex('profiles')
-    .insert(req.body)
+    .update(req.body)
     .where({user_id:req.params.id})
     .then((response)=> {
         console.log(response)
@@ -27,10 +27,9 @@ const createProfile = (req, res ) => {
 
 const updateProfile = (req, res)=> {
     knex('profiles')
-    .patch(req.body)
+    .update(req.body)
     .where({user_id: req.params.id})
     .then((response)=> {
-        console.log(response)
         res.status(204).send("update profile successfully")
     })
     .catch((err)=> {
