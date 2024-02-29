@@ -25,6 +25,10 @@ const createProfile = (req, res) => {
     .then((response) => {
       console.log(response);
       res.status(204).send("created profile content");
+    })
+    .catch((err)=> {
+        console.error(err)
+        res.status(500).send("error creating new profile")
     });
 };
 
@@ -32,20 +36,23 @@ const updateProfile = (req, res) => {
   const beltValues = req.body.belt_rank;
   const clubValues = req.body.club_name;
 
-//   let image;
+  let image;
 
-//   if(req.file){
-//     image =req.file.filename;
-//   } else if (!req.file){
-//     image =req.body.image;
-//   }
-
+  if(req.file){
+    image =req.file.path
+  } else if (!req.file){
+    image =req.body.image;
+  }
 
   // no belt or club update
   if (!beltValues && !clubValues) {
-    console.log("No Belt no club", req.body);
     knex("profiles")
-      .update(req.body)
+      .update({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        bio: req.body.bio, 
+        image: image
+    })
       .where({ user_id: req.params.id })
       .then((response) => {
         res.status(204).send("updated without belt or club change");
@@ -58,7 +65,6 @@ const updateProfile = (req, res) => {
   // belt update no club
   else if (beltValues && !clubValues) {
     const [belt_rank_id, belt_rank] = beltValues.split(",");
-    console.log("belt NO club", req.body);
     knex("profiles")
       .update({
         first_name: req.body.first_name,
@@ -66,6 +72,7 @@ const updateProfile = (req, res) => {
         belt_rank: belt_rank,
         belt_rank_id: belt_rank_id,
         bio: req.body.bio,
+        image: image
       
       })
       .where({ user_id: req.params.id })
@@ -80,7 +87,7 @@ const updateProfile = (req, res) => {
   // no belt change but club change
   (!beltValues && clubValues) {
     const [club_id, club_name] = clubValues.split(",");
-    console.log("no belt, club change", req.body);
+
     knex("profiles")
       .update({
         first_name: req.body.first_name,
@@ -88,6 +95,7 @@ const updateProfile = (req, res) => {
         club_id: club_id,
         club_name: club_name,
         bio: req.body.bio,
+        image: image
      
       })
       .where({ user_id: req.params.id })
@@ -103,7 +111,6 @@ const updateProfile = (req, res) => {
   (beltValues && clubValues) {
     const [belt_rank_id, belt_rank] = beltValues.split(",");
     const [club_id, club_name] = clubValues.split(",");
-    console.log('club & belt change', req.body)
     knex("profiles")
       .update({
         first_name: req.body.first_name,
@@ -113,6 +120,7 @@ const updateProfile = (req, res) => {
         club_id: Number(club_id),
         club_name: club_name,
         bio: req.body.bio,
+        image: image
         
       })
       .where({ user_id: req.params.id })
