@@ -27,7 +27,6 @@ const addUser = async (req, res) => {
   const { email, password, confirmPassword } = req.body;
   const hashedPassword = await bcrypt.hashSync(req.body.password, 10);
   const hashedConfirmPassword = await bcrypt.hashSync(req.body.confirmPassword, 10);
-  console.log({ hashedPassword, hashedConfirmPassword, email });
   const newUser = {
     email: email,
     password: hashedPassword,
@@ -51,8 +50,13 @@ const addUser = async (req, res) => {
 
   // insert into database
   try {
-    await knex("users").insert(newUser);
-    res.status(201).send({ message: "registered new user"});
+    await knex("users")
+    .insert(newUser)
+    .then((response)=> {
+      console.log("response user_id", response)
+     const user_id = response
+     res.status(201).send({message:"success, new user created", user_id: user_id});
+    })
   } catch (err) {
     console.error(err);
     res.status(500).send({ message: "error at addUser, loginController" });

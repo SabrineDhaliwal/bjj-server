@@ -8,7 +8,7 @@ const getProfileDetails = (req, res) => {
     .where({ user_id: req.params.id })
     .then((profiledetails) => {
       res.status(200).json(profiledetails);
-      console.log(profiledetails);
+      console.log('profile details', profiledetails);
     })
     .catch((err) => {
       console.error(err);
@@ -19,8 +19,32 @@ const getProfileDetails = (req, res) => {
 };
 
 const createProfile = (req, res) => {
-  knex("profiles")
-    .update(req.body)
+    console.log('req body', req.body)
+    let image;
+
+    if(req.file){
+        image =req.file.path
+    } else if (!req.file){
+        image =req.body.image;
+    }
+    const beltValues = req.body.belt_rank;
+    const clubValues = req.body.club_name;
+  
+    const [belt_rank_id, belt_rank] = beltValues.split(",");
+    const [club_id, club_name] = clubValues.split(",")
+    
+    knex("profiles")
+    .insert({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        belt_rank: belt_rank,
+        belt_rank_id: Number(belt_rank_id),
+        club_id: Number(club_id),
+        club_name: club_name,
+        bio: req.body.bio,
+        image: image,
+        user_id: req.params.id
+    })
     .where({ user_id: req.params.id })
     .then((response) => {
       console.log(response);
