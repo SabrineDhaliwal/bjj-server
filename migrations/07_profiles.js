@@ -22,18 +22,6 @@ exports.up = function (knex){
         table.foreign("club_id").references("clubs.club_id");
         table.foreign('user_id').references('users.user_id')
     
-        
-
-        // table.increments('combo_id').primary();
-        // table.integer('tech_id').unsigned();
-        // table.integer('target_id').unsigned();
-        // table.integer('position_id').unsigned();
-
-        // table.foreign('tech_id').references('techs.tech_id');
-        // table.foreign('target_id').references('targets.target_id');
-        // table.foreign('position_id').references('positions.position_id');
-
-
     });
 };
 /**
@@ -43,10 +31,5 @@ exports.up = function (knex){
 
 exports.down = function(knex){
     return knex.schema.dropTable('profiles')
-    // .dropTable('belt_ranks')
-    // .dropTable('clubs')
-    // .dropTable('users')
-    // .dropTable("targets")
-    // .dropTable("techs")
-    // .dropTable("combos");
+   
 };

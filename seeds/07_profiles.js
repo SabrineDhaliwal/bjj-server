@@ -2,11 +2,11 @@ exports.seed = async function (knex) {
   await knex("profiles").del();
   await knex("profiles").insert([
     {
-        profile_id: 6,
+      profile_id: 1,
       first_name: "tesing",
       last_name: "testing",
-      belt_rank: "white belt - 1 stripe",
-      belt_rank_id: 3,
+      belt_rank: "white belt",
+      belt_rank_id: 2,
       club_name: "matcraft",
       club_id: 1,
       bio: "Just starting out and this is tough!",
