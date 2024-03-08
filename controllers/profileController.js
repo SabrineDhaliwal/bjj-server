@@ -8,7 +8,6 @@ const getProfileDetails = (req, res) => {
     .where({ user_id: req.params.id })
     .then((profiledetails) => {
       res.status(200).json(profiledetails);
-      //   console.log('profile details', profiledetails);
     })
     .catch((err) => {
       console.error(err);
@@ -19,7 +18,6 @@ const getProfileDetails = (req, res) => {
 };
 
 const createProfile = (req, res) => {
-  console.log("req body", req.body);
   let image;
 
   if (req.file) {
@@ -47,7 +45,6 @@ const createProfile = (req, res) => {
     })
     .where({ user_id: req.params.id })
     .then((response) => {
-      console.log(response);
       res.status(204).send("created profile content");
     })
     .catch((err) => {
@@ -57,8 +54,6 @@ const createProfile = (req, res) => {
 };
 
 const updateProfile = (req, res) => {
-  console.log("req body from FE", req.body);
-  console.log('file', req.file)
   let image;
 
   if (req.file) {
@@ -66,13 +61,39 @@ const updateProfile = (req, res) => {
   } else if (!req.file) {
     image = req.body.image;
   }
-  //   const clubValues = req.body.club_name;
-
-
-  // BELT CHANGE ONLY
   const beltInput = req.body.belt_rank;
+  const clubInput = req.body.club_name;
+
   const beltValues =beltInput.split(',')
-  if (beltValues.length == 2) {
+  const clubValues = clubInput.split(',')
+
+// BOTH BELT & CLUB
+    if (beltValues == 2 && clubValues ==2) {
+      //both change
+      const [belt_rank_id, belt_rank] = beltValues;
+      const [club_id, club_name] = clubValues;
+      knex("profiles")
+        .update({
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          belt_rank: belt_rank,
+          belt_rank_id: Number(belt_rank_id),
+          club_id: Number(club_id),
+          club_name: club_name,
+          bio: req.body.bio,
+          image: image,
+        })
+        .where({ user_id: req.params.id })
+        .then((response) => {
+          res.status(204).send("updated with new belt & club");
+        })
+        .catch((err) => {
+          console.error(err);
+          res.status(500).send("error at belt && club");
+        });
+    }
+  // BELT CHANGE ONLY
+  else if (beltValues.length == 2 ) {
       const [belt_rank_id, belt_rank] = beltValues;
       knex("profiles")
       .update({
@@ -91,98 +112,46 @@ const updateProfile = (req, res) => {
         console.error(err);
         res.status(500).send("error at update Profile");
       });   
+      //CLUB CHANGE ONLY
+
+  } else if (clubValues.length == 2){       
+        const [club_id, club_name] = clubValues;
+      
+          knex("profiles")
+            .update({
+              first_name: req.body.first_name,
+              last_name: req.body.last_name,
+              club_id: club_id,
+              club_name: club_name,
+              bio: req.body.bio,
+              image: image,
+            })
+            .where({ user_id: req.params.id })
+            .then((response) => {
+              res.status(204).send("updated with new club");
+            })
+            .catch((err) => {
+              console.error(err);
+              res.status(500).send("error at !belt && club");
+            });
   } else {
-        console.log("do next step of logic")
-  }
-   
-
-  //   console.log("club value line 65", clubValues);
-
-  //   if (beltValues && clubValues) {
-  //     //both change
-  //     const [club_id, club_name] = clubValues.split(",");
-  //     knex("profiles")
-  //       .update({
-  //         first_name: req.body.first_name,
-  //         last_name: req.body.last_name,
-  //         belt_rank: belt_rank,
-  //         belt_rank_id: Number(belt_rank_id),
-  //         club_id: Number(club_id),
-  //         club_name: club_name,
-  //         bio: req.body.bio,
-  //         image: image,
-  //       })
-  //       .where({ user_id: req.params.id })
-  //       .then((response) => {
-  //         res.status(204).send("updated with new belt & club");
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         res.status(500).send("error at belt && club");
-  //       });
-  //   }
-  //   else
-  //   if (beltValues && !clubValues) {
-  //     // belt update no club
-  //     const [belt_rank_id, belt_rank] = beltValues.split(",");
-  // knex("profiles")
-  //   .update({
-  //     first_name: req.body.first_name,
-  //     last_name: req.body.last_name,
-  //     belt_rank: belt_rank,
-  //     belt_rank_id: belt_rank_id,
-  //     bio: req.body.bio,
-  //     image: image,
-  //   })
-  //   .where({ user_id: req.params.id })
-  //   .then((response) => {
-  //     res.status(204).send("update profile successfully");
-  //   })
-  //   .catch((err) => {
-  //     console.error(err);
-  //     res.status(500).send("error at update Profile");
-  //   });
-  //   } else if (
-  //     // no belt change but club change
-  //     !beltValues &&clubValues
-  //   ) {
-  //     const [club_id, club_name] = clubValues.split(",");
-
-  //     knex("profiles")
-  //       .update({
-  //         first_name: req.body.first_name,
-  //         last_name: req.body.last_name,
-  //         club_id: club_id,
-  //         club_name: club_name,
-  //         bio: req.body.bio,
-  //         image: image,
-  //       })
-  //       .where({ user_id: req.params.id })
-  //       .then((response) => {
-  //         res.status(204).send("updated with new club");
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         res.status(500).send("error at !belt && club");
-  //       });
-  //   } else if (!beltValues && !clubValues) {
-  //     //   // no belt or club update
-  //     knex("profiles")
-  //       .update({
-  //         first_name: req.body.first_name,
-  //         last_name: req.body.last_name,
-  //         bio: req.body.bio,
-  //         image: image,
-  //       })
-  //       .where({ user_id: req.params.id })
-  //       .then((response) => {
-  //         res.status(204).send("updated without belt or club change");
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         res.status(500).send("error at BE update w/out belt or club change");
-  //       });
-  //   }
+  //NO BELT OR CLUB CHANGE
+  knex("profiles")
+    .update({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      bio: req.body.bio,
+      image: image,
+    })
+    .where({ user_id: req.params.id })
+    .then((response) => {
+      res.status(204).send("update profile successfully");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("error at update Profile");
+    });
+    } 
 };
 
 module.exports = {
