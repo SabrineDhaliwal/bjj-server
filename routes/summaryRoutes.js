@@ -19,9 +19,16 @@ const router = express.Router();
 const summaryController = require("../controllers/summaryController");
 const upload = require("../middleware/multer")
 
-router.route("/").post(upload.single('video'), summaryController.addNewSummary)
-router.route("/:id").get(summaryController.getSummaries)
-router.route("/edit/:summaryid").delete(summaryController.deleteSummary).get(summaryController.getSummary).put(summaryController.updateSummary)
+router.route("/")
+    .post(upload.single('video'), summaryController.addNewSummary);
+
+router.route("/:id")
+    .get(summaryController.getSummaries);
+
+router.route("/edit/:summaryid")
+    .delete(summaryController.deleteSummary)
+    .get(summaryController.getSummary)
+    .put(upload.single('video'),summaryController.updateSummary);
 
 module.exports = router;
 

@@ -9,8 +9,8 @@ exports.up = function(knex){
         table.integer("user_id").unsigned();
         table.integer("tech_id").unsigned();
         table.string("tech_name").notNullable();
-        table.integer("target_id").unsigned();
-        table.string("target_name").notNullable();
+        // table.integer("target_id").unsigned();
+        // table.string("target_name").notNullable();
         table.integer("position_id").unsigned();
         table.string("position_name").notNullable
 
@@ -22,7 +22,7 @@ exports.up = function(knex){
 
         table.foreign("user_id").references("users.user_id");
         table.foreign("tech_id").references("techs.tech_id");
-        table.foreign("target_id").references("targets.target_id");
+        // table.foreign("target_id").references("targets.target_id");
         table.foreign("position_id").references("positions.position_id");
         
 

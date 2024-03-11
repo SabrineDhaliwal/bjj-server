@@ -3,7 +3,6 @@ const knex = require('knex')(require("../knexfile"));
 //TODO get request to populate position dropdown menu
 
 //LATER TODO
-// get by id
 // post new postion
 // delete position
 
