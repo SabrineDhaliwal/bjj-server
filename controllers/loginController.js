@@ -68,23 +68,25 @@ const loginUser = async (req, res) => {
     try{
         const { email, password } = req.body;
         const user = await knex("users").where("email", email).first();
-        // console.log("user OBJECT!", user );
-        const user_id = user.user_id;
-      
+
         if (!email || !password) {
           return res.status(400).send("Missing required fields");
         }
-      
-        if (user == null) {
-          return res.status(400).send("no user found");
+        if (user === undefined) {
+          return res.status(404).send("no user found with that email");
         }
+        
+        const user_id = user.user_id;
+        
+      
+
       
       // validate Password
        const passwordMatch = await bcrypt.compare(password, user.password) 
        if (!passwordMatch){
          return res.status(401).send("Invalid Password");
         } 
-      
+ 
         const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET);
         res.json({ accessToken: accessToken, user_id: user_id });
     }catch (err){
